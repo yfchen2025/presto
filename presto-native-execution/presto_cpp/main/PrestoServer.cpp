@@ -1342,7 +1342,10 @@ void PrestoServer::registerFileReadersAndWriters() {
   velox::dwrf::registerDwrfReaderFactory();
   velox::dwrf::registerDwrfWriterFactory();
   velox::orc::registerOrcReaderFactory();
-  velox::parquet::registerParquetReaderFactory();
+
+  auto systemConfig = SystemConfig::instance();
+  bool clacEnabled = systemConfig->clacEnabled();
+  velox::parquet::registerParquetReaderFactory(clacEnabled);
   velox::parquet::registerParquetWriterFactory();
 }
 

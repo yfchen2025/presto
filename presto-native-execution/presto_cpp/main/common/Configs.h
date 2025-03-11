@@ -721,7 +721,7 @@ class SystemConfig : public ConfigBase {
       "driver.max-page-partitioning-buffer-size"};
   static constexpr std::string_view kPlanValidatorFailOnNestedLoopJoin{
       "velox-plan-validator-fail-on-nested-loop-join"};
-
+  static constexpr std::string_view kCryptoClacEnabled{"crypto.clac.enabled"};
   // Specifies the default Presto namespace prefix.
   static constexpr std::string_view kPrestoDefaultNamespacePrefix{
       "presto.default-namespace"};
@@ -1001,6 +1001,8 @@ class SystemConfig : public ConfigBase {
   bool prestoNativeSidecar() const;
 
   std::string prestoDefaultNamespacePrefix() const;
+
+  bool clacEnabled() const;
 
   std::string poolType() const;
 

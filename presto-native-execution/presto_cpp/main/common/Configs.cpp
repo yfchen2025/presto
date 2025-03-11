@@ -252,6 +252,7 @@ SystemConfig::SystemConfig() {
           STR_PROP(kCacheVeloxTtlCheckInterval, "1h"),
           BOOL_PROP(kEnableRuntimeMetricsCollection, false),
           BOOL_PROP(kPlanValidatorFailOnNestedLoopJoin, false),
+          BOOL_PROP(kCryptoClacEnabled, false),
           STR_PROP(kPrestoDefaultNamespacePrefix, "presto.default"),
           STR_PROP(kPoolType, "DEFAULT"),
           BOOL_PROP(kSpillEnabled, false),
@@ -878,6 +879,10 @@ int32_t SystemConfig::largestSizeClassPages() const {
 
 bool SystemConfig::enableRuntimeMetricsCollection() const {
   return optionalProperty<bool>(kEnableRuntimeMetricsCollection).value();
+}
+
+bool SystemConfig::clacEnabled() const {
+  return optionalProperty<bool>(kCryptoClacEnabled).value();
 }
 
 std::string SystemConfig::prestoDefaultNamespacePrefix() const {
